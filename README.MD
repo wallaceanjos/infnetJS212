@@ -1,6 +1,14 @@
 # JavaScript
 
 
+### Monitores
+
+* Igor Imperiali - https://t.me/iimperiali
+  
+* Davi Mesquita - https://t.me/daviMesquita
+
+### Links
+
 * https://infnet.zoom.us/j/93670925618
 
 * https://lms.infnet.edu.br/moodle/course/view.php?id=4144
