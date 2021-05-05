@@ -54,9 +54,50 @@ Se na final houver empate na final, exibir resultado dos penaltis.
 ## Final
 
 Primeiro 0x0 Segundo
+
 ? penaltis ?
+
 Primeiro 0x0 Segundo
 
 ## Campeão
 
 Time campeão
+
+# Rubricas
+
+## Sintaxe e padrões
+
+* Sempre utilizou let ou const par declarar variáveis
+* Utilizou formatação de string interpolation
+* Sempre utilizou === (igualzão) ou !== (diferentão) nas comparações
+* Código legivel e organizado
+
+## Solução
+
+* Utilizou funções para organizar o código
+* Quebrou o problema em etapas (partidas, calculo, exibição dos resultados)
+* Seguiu o enunciado ou combinados em sala de aula
+* Criou uma função que calcula o resultado da partida
+* Criou estratégia que obtenha os dois finalista
+
+## Exibição
+
+* Seguiu a exibição dos resultados conforme o solicitado no enunciado
+* Sempre imprimiu uma string formatada (nunca objetos puros) no console
+* Respeitou a ordem das partidas e da final
+
+## Critério sujetivos
+
+* bom
+* médio
+* muito bom
+* fora da curva
+
+## Entrega
+
+* o arquivo deve estar com o nome do aluno, terminado por .js, exemplo:
+    * `EzequielBertti.js`
+
+## Zeros sem discução
+
+* Não compila, erro de sintaxe, não executa, entregou em formatado diferente do que *.JS
