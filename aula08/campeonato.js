@@ -62,7 +62,7 @@ class Campeonato {
   }
 
   inscreverTime(time) {
-    if (time.length > 4) {
+    if (this.times.length > 4) {
       console.log('ja temos times de mais')
       return
     }
