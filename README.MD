@@ -9,6 +9,8 @@
 
 ### Links
 
+* https://t.me/infnetJS212
+
 * https://infnet.zoom.us/j/93670925618
 
 * https://lms.infnet.edu.br/moodle/course/view.php?id=4144
