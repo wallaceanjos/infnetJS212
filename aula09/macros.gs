@@ -3,8 +3,30 @@ function onOpen( ){
 
  ui.createMenu('Meus Scripts')
       .addItem('Executar teste', 'cabeca')
+      .addItem('Executar partida', 'partida')
       .addToUi()
 }
+
+function calcularGols(){
+  return Math.floor(Math.random() * 3)
+}
+
+function partida(){
+  let spreadsheet = SpreadsheetApp.getActive()
+  
+  resultados = []
+  for(let i = 0; i < 12; i++){
+    resultados.push(
+      [
+        calcularGols(),
+        calcularGols()
+      ]
+    )
+
+  }
+  spreadsheet.getRange('B2:C13').setValues(resultados)
+}
+
 
 
 function cabeca() {
