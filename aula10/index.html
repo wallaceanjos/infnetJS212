@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<h1>Nome: <small class="nome_exibir"></small></h1>
+<h2>Sobrenome: <small class="sobrenome_exibir"></small></h2>
+<h3>materia: <small class="materia_exibir"></small></h3>
+
+<p>
+  <label>
+    materia
+    <input id="materia">
+  </label>
+</p>
+
+<p>
+  <label>
+    nome
+    <input id="nome">
+  </label>
+</p>
+<p>
+  <label>
+    sobrenome
+    <input id="sobrenome">
+  </label>
+</p>
+<p>
+  <button onclick="cabeca()">teste</button>
+</p>
+
+<h1>Nome: <small class="nome_exibir"></small></h1>
+<h2>Sobrenome: <small class="sobrenome_exibir"></small></h2>
+<h3>materia: <small class="materia_exibir"></small></h3>
+
+<script>
+
+  function antigo() {
+    // capturar elemento pelo id
+    let nome = document.getElementById('nome').value
+
+    // captura elemento pela class
+    let $exibir_nome = document.getElementsByClassName('sobrenome_exibir')
+
+    // captura pelo TAG do elemento
+    let $h1 = document.getElementsByName('h1')
+
+  }
+
+  function cabeca() {
+    let nome = document.querySelector('#nome').value
+    let sobrenome = document.querySelector('#sobrenome').value
+    let materia = document.querySelector('#materia').value
+
+
+    for (let $el of document.querySelectorAll('.nome_exibir')) {
+      $el.innerText = nome
+    }
+    document.querySelectorAll('.sobrenome_exibir').forEach(($el) => {
+      $el.innerText = sobrenome
+    })
+
+    let $materia_els = document.querySelectorAll('.materia_exibir')
+    for (let i = 0; i < $materia_els.length; i++) {
+      let $el = $materia_els[i]
+      $el.innerText = materia
+    }
+
+  }
+
+</script>
+
+</body>
+</html>
