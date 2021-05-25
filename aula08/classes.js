@@ -35,3 +35,10 @@ class Carro extends Veiculo {
 
 let moto = new Carro('verde')
 moto.andar()
+
+
+class Nome {
+  cabecao = null
+}
+
+
