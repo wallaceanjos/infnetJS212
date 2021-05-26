@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<p>
+  <label>
+    materia
+    <input id="materia">
+  </label>
+</p>
+
+<p>
+  <label>
+    nome
+    <input id="nome">
+  </label>
+</p>
+<p>
+  <label>
+    sobrenome
+    <input id="sobrenome">
+  </label>
+</p>
+<p>
+  <button onclick="pe()">teste</button>
+</p>
+
+<div class="js_resultado">
+
+</div>
+
+<script>
+
+  function cabeca() {
+    let nome = document.querySelector('#nome').value
+    let sobrenome = document.querySelector('#sobrenome').value
+    let materia = document.querySelector('#materia').value
+
+    let $resultado = document.querySelector('.js_resultado')
+
+    let $nome = document.createElement('h1')
+    $nome.innerText = 'Nome:'
+    let $nomeSmall = document.createElement('small')
+    $nomeSmall.innerText = nome
+    $nome.append($nomeSmall)
+    $resultado.append($nome)
+
+    let $sobrenome = document.createElement('h1')
+    $sobrenome.innerText = 'Sobrenome:'
+    let $sobrenomeSmall = document.createElement('small')
+    $sobrenomeSmall.innerText = sobrenome
+    $sobrenome.append($sobrenomeSmall)
+    $resultado.append($sobrenome)
+
+    let $materia = document.createElement('h1')
+    $materia.innerText = 'Materia:'
+    let $materiaSmall = document.createElement('small')
+    $materiaSmall.innerText = materia
+    $materia.append($materiaSmall)
+    $resultado.append($materia)
+
+  }
+
+  function pe() {
+    let nome = document.querySelector('#nome').value
+    let sobrenome = document.querySelector('#sobrenome').value
+    let materia = document.querySelector('#materia').value
+
+    let $resultado = document.querySelector('.js_resultado')
+
+    $resultado.append(
+      fabrica('h1',
+        fabrica('small', null, nome),
+        'Nome:')
+    )
+    $resultado.append(
+      fabrica('h1',
+        fabrica('small', null, sobrenome),
+        'Sobrenome:')
+    )
+    $resultado.append(
+      fabrica('h1',
+        fabrica('small', null, materia),
+        'Materia:', {blabla: 'lba'})
+    )
+  }
+
+  function fabrica(tipo, filhos, texto, atributos) {
+    let $el = document.createElement(tipo)
+
+    $el.innerText = texto
+    if (atributos) {
+      for(let [chave, valor] of Object.entries(atributos)){
+        $el.setAttribute(chave, valor)
+      }
+    }
+
+    if (filhos) {
+      $el.append(filhos)
+    }
+    return $el
+  }
+
+  function proibidoDeFazer() {
+    let nome = document.querySelector('#nome').value
+    let sobrenome = document.querySelector('#sobrenome').value
+    let materia = document.querySelector('#materia').value
+
+    let $resultado = document.querySelector('.js_resultado')
+
+    $resultado.innerHTML = `
+    <h1>Nome: <small>${nome}</small></h1>
+    <h2>Sobrenome: <small>${sobrenome}</small></h2>
+    <h3>materia: <small>${materia}</small></h3>
+    `
+
+  }
+
+</script>
+
+</body>
+</html>
