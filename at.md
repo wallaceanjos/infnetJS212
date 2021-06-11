@@ -1,5 +1,7 @@
 # Campeonatin
 
+![image](https://user-images.githubusercontent.com/140394/121614835-f8223180-ca35-11eb-92d3-799ea0f17fb0.png)
+
 Criar uma tela que ajuda a classificar os times baseado apenas em vitorias, empates e derrotas (não precisa se
 preocupar com gols). 4 times jogando entre si apenas 1 rodada.
 
