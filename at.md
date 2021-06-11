@@ -30,7 +30,7 @@ Criou elementos apenas utilizando javascript, no html possuir apenas um elemento
 Utilizou tabelas e divs para organizar as informações da tela
 Ao clicar em uma calula da tabela de partida, coloriou com a cor correspondente
 Ao clicar em uma celula da tabela de partida, atualizou automaticamente a tabela de classificacao
-Ao clicar em uma celular que jã estava marcada, deve se desmarcar
+Ao clicar em uma celula que jã estava marcada, deve se desmarcar
 Pontuou corretamente na classificação
 
 ## Proibido
