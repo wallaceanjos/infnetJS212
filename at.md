@@ -21,19 +21,23 @@ Podem utilizar o CSS do Bootstrap para montar o layout.
 ## Rubricas
 
 ### sintaxe e organização
-Utilizou boas praticas para declaração de métodos e variáveis
-Segui padroes de nomeclatura de metodos e variáveis de javascript
-Utilizou classes e objetos
-Fez uso de repetição mais recente de javascript
+* Utilizou boas praticas para declaração de métodos e variáveis
+* Segui padroes de nomeclatura de metodos e variáveis de javascript
+* Utilizou classes e objetos
+* Fez uso de repetição mais recente de javascript
 
 ### interface Interacao
-Criou o head minimo para o bom funcionamento da página (title, charset, outros)
-Criou elementos apenas utilizando javascript, no html possuir apenas um elemento como ancora
-Utilizou tabelas e divs para organizar as informações da tela
-Ao clicar em uma calula da tabela de partida, coloriou com a cor correspondente
-Ao clicar em uma celula da tabela de partida, atualizou automaticamente a tabela de classificacao
-Ao clicar em uma celula que jã estava marcada, deve se desmarcar
-Pontuou corretamente na classificação
+* Criou o head minimo para o bom funcionamento da página (title, charset, outros)
+* Criou elementos apenas utilizando javascript, no html possuir apenas um elemento como ancora
+* Utilizou tabelas e divs para organizar as informações da tela
+* Ao clicar em uma calula da tabela de partida, coloriou com a cor correspondente
+* Ao clicar em uma celula da tabela de partida, atualizou automaticamente a tabela de classificacao
+* Ao clicar em uma celula que jã estava marcada, deve se desmarcar
+* Pontuou corretamente na classificação
+
+### ponto extra
+* armazenar dados no localstorage
+* recarregar automaticamente do localstorage
 
 ## Proibido
 * usar innerHtml
