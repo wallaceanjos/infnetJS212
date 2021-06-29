@@ -43,3 +43,9 @@ Podem utilizar o CSS do Bootstrap para montar o layout.
 * usar innerHtml
 * criar elementos no html
 * usar libs externas não autorizadas em aula
+
+
+### resultado
+
+![image](https://user-images.githubusercontent.com/140394/123876674-1cc14900-d912-11eb-8552-e16a88ee8c3d.png)
+
