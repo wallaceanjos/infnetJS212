@@ -1,0 +1,60 @@
+
+
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    .reprovado {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+
+<div id="macarrao">
+  <input v-model.trim="nome" @keydown.enter="adicionar">
+  <button @click="adicionar">adicionar</button>
+  <ul>
+    <li v-for="(nome, index) in alunos">
+      {{ nome }}
+      <span @click="apagar(index)">apagar</span>
+    </li>
+  </ul>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+
+  let abobrinha = new Vue({
+    el: '#macarrao',
+    data: {
+      nome: '',
+      alunos: [
+        'ezequiel',
+        'maria',
+        'joao',
+        'jose',
+        'paulo',
+      ]
+    },
+    methods: {
+      adicionar() {
+        if (!this.nome) {
+          return
+        }
+        this.alunos.push(this.nome)
+        this.nome = ''
+      },
+      apagar(index) {
+        this.alunos.splice(index, 1)
+      }
+    }
+  })
+
+
+</script>
+</body>
+</html>

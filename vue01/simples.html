@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    .reprovado {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+
+<div id="app">
+  <input v-model.trim="nome" @keydown.enter="adicionar">
+  <button @click="adicionar">adicionar</button>
+  <ul>
+    <li v-for="aluno in alunos" :key="aluno.id">
+      <span :class="{reprovado: !aluno.aprovado }" @click="aluno.aprovado = !aluno.aprovado">
+        <span v-if="aluno.aprovado">aprovado</span>
+        {{ aluno.nome }}
+      </span>
+      <span @click="apagar(aluno)">apagar</span>
+    </li>
+  </ul>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script>
+
+  let app = new Vue({
+    el: '#app',
+    data: {
+      nome: '',
+      alunos: [
+        {id: 1, nome: 'ezequiel', aprovado: true},
+        {id: 2, nome: 'maria', aprovado: true},
+        {id: 3, nome: 'joao', aprovado: true},
+        {id: 4, nome: 'jose', aprovado: true},
+        {id: 5, nome: 'paulo', aprovado: true},
+      ]
+    },
+    methods: {
+      adicionar() {
+        if (!this.nome) {
+          return
+        }
+        let aluno = {
+          nome: this.nome,
+          id: this.alunos.length + 1
+        }
+        this.alunos.push(aluno)
+        this.nome = ''
+      },
+      apagar(aluno) {
+        this.alunos.splice(this.alunos.indexOf(aluno), 1)
+      }
+    }
+  })
+
+
+</script>
+</body>
+</html>
+
