@@ -10,81 +10,47 @@
     }
 </style>
 
-<body :class="{escurin:isBlackoutMoment}">
-<div id="app" :class="{escurin:isBlackoutMoment}">
-  <h1>Listinha de tarefas</h1>
-  <button @click="()=>this.isBlackoutMoment = !this.isBlackoutMoment">
-    {{isBlackoutMoment ? 'Solzinho' : 'Sombrinha'}}
-  </button>
-  <input type="text"
-         :class="{escurin:isBlackoutMoment}"
-         v-model="campoTexto" @keyup.enter="adicionar">
-  <ul>
-    <li v-for="(tarefa,indice) of tarefas" :key="indice">
-      <input type="checkbox" v-model="tarefa.feito">
-      <input v-if="editando === tarefa" v-model="tarefa.texto" placeholder="texto"/>
-      <span v-else>{{ tarefa.texto }}</span>
-
-      <button @click="remover(indice)">remover</button>
-      <button @click="editar(tarefa)">editar</button>
-
-    </li>
-  </ul>
+<body>
+<div id="app">
+  <input v-model="cep">
   <div>
-    {{ qtdFeitas }} tarefas feitas de um total {{ qtdTarefas }}
+    <span>{{ dados.logradouro }}</span>
+    <span>{{ dados.bairro }}</span>
+    <span>{{ dados.localidade }}</span>
+    <span>{{ dados.uf }}</span>
   </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
 <script>
-  let qtd = 0
   const app = new Vue({
     el: '#app',
     data: () => {
       return {
-        tarefas: [
-          {texto: 'limpar a casa', editando: false, feito: false},
-          {texto: 'lavar a louca', editando: false, feito: false},
-          {texto: 'lavar a louca', editando: false, feito: false},
-          {texto: 'lavar a louca', editando: false, feito: true}
-        ],
-        campoTexto: '',
-        isBlackoutMoment: false,
-        editando: null
+        cep: '22280010',
+        dados: {}
       }
     },
-    computed: {
-      qtdTarefas() {
-        return this.tarefas.length
-      },
-      qtdFeitas() {
-        qtd++
-        return this.tarefas.filter(tarefa => tarefa.feito === true).length
+    watch:{
+      cep(){
+        if(this.cep.length === 8){
+          this.carregar()
+        }
       }
     },
     methods: {
-      adicionar() {
-        this.tarefas.push({texto: this.campoTexto, editando: false})
-        this.campoTexto = ''
-      },
-      remover(indice) {
-        this.tarefas.splice(indice, 1)
-      },
-      editar(tarefa) {
-        if (this.editando !== tarefa) {
-          this.editando = tarefa
-        } else {
-          this.editando = null
-        }
+      carregar() {
+        fetch(`https://viacep.com.br/ws/${this.cep}/json/`).then(r => r.json()).then((dados) => {
+          this.dados = dados
+        })
       }
-
     },
     beforeCreate() {
-      // debugger
+
     },
     created() {
-      // debugger
+      this.carregar()
     },
     beforeMount() {
       // debugger
@@ -94,12 +60,6 @@
       // momento mais favoravel para se chamar uma api
       // e carregar a tela com dados
     },
-    beforeUpdate() {
-      // debugger
-    },
-    updated() {
-      // debugger
-    }
   })
 
 </script>
