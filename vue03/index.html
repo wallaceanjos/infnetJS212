@@ -18,28 +18,60 @@
 
   <filme-formulario :filmes="filmes"></filme-formulario>
 
-  <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
-    <div class="col" v-for="filme in filmes">
-      <div class="card mb-4 rounded-3 shadow-sm">
-        <div class="card-header py-3">
-          <h4 class="my-0 fw-normal">{{ filme.titulo }}</h4>
-        </div>
-        <div class="card-body">
-          <ul class="list-unstyled mt-3 mb-4">
-            <li>{{ filme.valor }}</li>
-            <li>{{ filme.descricao }}</li>
-          </ul>
-          <button type="button" class="w-100 btn btn-lg btn-outline-primary">Alugar</button>
-        </div>
-      </div>
-    </div>
-  </div>
+  <filme-lista titulo="filmes em destaque">
+    <filme-item v-for="ff in filmes" :filme="ff">
+    </filme-item>
+  </filme-lista>
 
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
 <script>
+
+  Vue.component('filme-body', {
+    template: `
+      <div class="card-body">
+        <ul class="list-unstyled mt-3 mb-4">
+          <li>{{ filme.valor }}</li>
+          <li>{{ filme.descricao }}</li>
+        </ul>
+        <button type="button" class="w-100 btn btn-lg btn-outline-primary">Alugar</button>
+      </div>
+    `,
+    props: {
+      filme: Object
+    }
+  })
+
+  Vue.component('filme-item', {
+    template: `
+      <div class="col">
+      <div class="card mb-4 rounded-3 shadow-sm">
+        <div class="card-header py-3">
+          <h4 class="my-0 fw-normal">{{ filme.titulo }}</h4>
+        </div>
+        <filme-body :filme="filme"></filme-body>
+      </div>
+      </div>
+    `,
+    props: {
+      filme: Object
+    }
+  })
+
+
+  Vue.component('filme-lista', {
+    template: `
+      <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+      <h1 v-if="titulo">{{ titulo }}</h1>
+      <slot></slot>
+      </div>
+    `,
+    props: {
+      titulo: String
+    }
+  })
 
   Vue.component('filme-formulario', {
     template: `
@@ -57,7 +89,8 @@
           <input type="text" class="form-control" id="Descricao" placeholder="Descricao" v-model="formulario.descricao">
         </div>
         <button class="btn btn-success mt-3" @click="salvar">Salvar</button>
-      </div>`,
+      </div>
+    `,
 
     props: {
       filmes: Array
@@ -66,7 +99,7 @@
     data: () => {
       return {
         formulario: {
-          titulo:'',
+          titulo: '',
           valor: '',
           descricao: '',
         }
@@ -74,7 +107,7 @@
     },
 
     methods: {
-      salvar(){
+      salvar() {
         this.filmes.push(this.formulario)
         this.formulario = {}
       }
