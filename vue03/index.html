@@ -32,11 +32,11 @@
   Vue.component('filme-body', {
     template: `
       <div class="card-body">
-        <ul class="list-unstyled mt-3 mb-4">
-          <li>{{ filme.valor }}</li>
-          <li>{{ filme.descricao }}</li>
-        </ul>
-        <button type="button" class="w-100 btn btn-lg btn-outline-primary">Alugar</button>
+      <ul class="list-unstyled mt-3 mb-4">
+        <li>{{ filme.valor }}</li>
+        <li>{{ filme.descricao }}</li>
+      </ul>
+      <button type="button" class="w-100 btn btn-lg btn-outline-primary">Alugar</button>
       </div>
     `,
     props: {
@@ -73,21 +73,43 @@
     }
   })
 
+  Vue.component('campo', {
+    template: `
+      <div class="col-12">
+        <label :for="nome" class="form-label">{{ nome }}</label>
+        <input type="text" class="form-control" :id="nome" :placeholder="nome" :value="value"
+               @input="$emit('input', $event.target.value)">
+      </div>
+    `,
+    props: {
+      nome: String,
+      value: String
+    }
+  })
+
+  Vue.component('selecao', {
+    template: `
+      <div class="col-12">
+      <label :for="nome" class="form-label">{{ nome }}</label>
+      <select class="form-select" @input="$emit('input', $event.target.value)">
+        <option v-for="valor in valores" :value="valor">{{ valor }}</option>
+      </select>
+      </div>
+    `,
+    props: {
+      nome: String,
+      value: String,
+      valores: {type: Array, default: () => ['par', 'impar', 'sem']}
+    }
+  })
+
+
   Vue.component('filme-formulario', {
     template: `
       <div class="form my-3">
-        <div class="col-12">
-          <label for="Titulo" class="form-label">Titulo</label>
-          <input type="text" class="form-control" id="Titulo" placeholder="Titulo" v-model="formulario.titulo">
-        </div>
-        <div class="col-12">
-          <label for="valor" class="form-label">valor</label>
-          <input type="text" class="form-control" id="valor" placeholder="valor" v-model="formulario.valor">
-        </div>
-        <div class="col-12">
-          <label for="Descricao" class="form-label">Descricao</label>
-          <input type="text" class="form-control" id="Descricao" placeholder="Descricao" v-model="formulario.descricao">
-        </div>
+        <campo nome="Titulo" v-model="formulario.titulo"></campo>
+        <campo nome="Valor" v-model="formulario.valor"></campo>
+        <campo nome="Descrição" v-model="formulario.descricao"></campo>
         <button class="btn btn-success mt-3" @click="salvar">Salvar</button>
       </div>
     `,
@@ -99,9 +121,9 @@
     data: () => {
       return {
         formulario: {
-          titulo: '',
-          valor: '',
-          descricao: '',
+          titulo: 'teste',
+          valor: '123',
+          descricao: 'ttt',
         }
       }
     },
@@ -128,10 +150,6 @@
         fetch('filmes.json').then(r => r.json()).then((dados) => {
           this.filmes = dados
         })
-      },
-      salvar() {
-        this.filmes.push(this.formulario)
-        this.formulario = {}
       }
     },
     beforeCreate() {
