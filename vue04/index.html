@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Loucadahora</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="valornymous">
+
+</head>
+<style>
+
+</style>
+
+<body>
+<div id="app" class="container py-3">
+
+  <filme-formulario :filme="filme" @salvou="cadastra"></filme-formulario>
+
+  <filme-lista titulo="filmes em destaque">
+    <filme-item v-for="ff in filmes" :filme="ff" @editar="edicao">
+    </filme-item>
+  </filme-lista>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<script>
+
+  Vue.component('filme-body', {
+    template: `
+      <div class="card-body">
+      <ul class="list-unstyled mt-3 mb-4">
+        <li>{{ filme.valor }}</li>
+        <li>{{ filme.descricao }}</li>
+      </ul>
+      <button type="button" class="w-100 btn btn-lg btn-outline-primary">Alugar</button>
+      </div>
+    `,
+    props: {
+      filme: Object
+    }
+  })
+
+  Vue.component('filme-item', {
+    template: `
+      <div class="col">
+      <div class="card mb-4 rounded-3 shadow-sm">
+        <div class="card-header py-3">
+          <h4 class="my-0 fw-normal" @click="editar">{{ filme.titulo }}</h4>
+        </div>
+        <filme-body :filme="filme"></filme-body>
+      </div>
+      </div>
+    `,
+    props: {
+      filme: Object
+    },
+    methods: {
+      editar(){
+        this.$emit('editar', this.filme)
+      }
+    }
+  })
+
+  Vue.component('filme-lista', {
+    template: `
+      <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+      <h1 v-if="titulo">{{ titulo }}</h1>
+      <slot></slot>
+      </div>
+    `,
+    props: {
+      titulo: String
+    }
+  })
+
+  Vue.component('campo', {
+    template: `
+      <div class="col-12">
+        <label :for="nome" class="form-label">{{ nome }}</label>
+        <input type="text" class="form-control" :id="nome" :placeholder="nome" :value="value"
+               @input="$emit('input', $event.target.value)">
+      </div>
+    `,
+    props: {
+      nome: String,
+      value: String
+    }
+  })
+
+  Vue.component('selecao', {
+    template: `
+      <div class="col-12">
+      <label :for="nome" class="form-label">{{ nome }}</label>
+      <select class="form-select" @input="$emit('input', $event.target.value)">
+        <option v-for="valor in valores" :value="valor">{{ valor }}</option>
+      </select>
+      </div>
+    `,
+    props: {
+      nome: String,
+      value: String,
+      valores: {type: Array, default: () => ['par', 'impar', 'sem']}
+    }
+  })
+
+  Vue.component('filme-formulario', {
+    template: `
+      <div class="form my-3">
+        <campo nome="Titulo" v-model="filme.titulo"></campo>
+        <campo nome="Valor" v-model="filme.valor"></campo>
+        <campo nome="Descrição" v-model="filme.descricao"></campo>
+        <button class="btn btn-success mt-3" @click="salvar">Salvar</button>
+      </div>
+    `,
+
+    props: {
+      filme: Object
+    },
+
+    methods: {
+      salvar() {
+        this.$emit('salvou', this.filme)
+      }
+    }
+  })
+
+  // COMPOENETE PAI DE TODOS, RAIZ
+  const app = new Vue({
+    el: '#app',
+    data: () => {
+      return {
+        filme: {
+          titulo: 'teste2222',
+          valor: '1232222',
+          descricao: 'ttt2222',
+        },
+        filmes: [],
+      }
+    },
+    methods: {
+      carregar() {
+        fetch('filmes.json').then(r => r.json()).then((dados) => {
+          this.filmes = dados
+        })
+      },
+      cadastra(){
+        this.filmes.push(this.filme)
+        this.filme = {}
+      },
+      edicao(filme){
+        this.filme = filme
+      }
+    },
+    beforeCreate() {
+
+    },
+    created() {
+    },
+    beforeMount() {
+    },
+    mounted() {
+      this.carregar()
+    },
+  })
+
+</script>
+
+</body>
+</html>
