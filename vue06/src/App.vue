@@ -16,17 +16,9 @@
 
 <script>
 
-import FilmeFormulario from './components/FilmeFormulario.vue'
-import FilmeLista from './components/FilmeLista.vue'
-import FilmeItem from './components/FilmeItem.vue'
 import ex from './components/ex.js'
 
 export default {
-  components: {
-    FilmeItem,
-    FilmeLista,
-    FilmeFormulario
-  },
   data: () => {
     return {
       filme: {
