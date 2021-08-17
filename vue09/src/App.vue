@@ -21,7 +21,19 @@
 
 </template>
 
+
 <script>
+// todo:
+// atualizar lista superior
+// limpar campos depois de salvar
+// estados como drop-down
+// torcida tem q ser do tipo number
+// fundacao do tipo number
+// info tem q ser um textarea
+
+// transformar a listagem de times em uma tabela
+
+// editar um time
 
 import Campo from './components/Campo.vue'
 import axios from 'axios'
