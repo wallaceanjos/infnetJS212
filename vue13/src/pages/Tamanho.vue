@@ -2,15 +2,7 @@
   <h1>Produto</h1>
   <h1>nome <small> {{ produto.nome }}</small></h1>
   <h1>codigo <small>{{ codigo }}</small></h1>
-
-  <ul>
-    <li v-for="tamanho in produto.tamanhos" :key="tamanho.id">
-      <router-link :to="{name: 'tamanho', params: {codigo:produto.codigo, tamanho:tamanho.id }}">
-        {{ tamanho.nome }}
-      </router-link>
-    </li>
-  </ul>
-
+  <h1>tamanho <small>{{ tamanhoNome }}</small></h1>
 </template>
 
 <script>
@@ -23,8 +15,14 @@ export default {
     codigo(){
       return this.$route.params.codigo
     },
+    tamanho(){
+      return this.$route.params.tamanho
+    },
     produto(){
       return this.getProduto(this.codigo)
+    },
+    tamanhoNome(){
+      return this.produto.tamanhos.filter(t => t.id === this.tamanho)[0].nome
     }
   }
 }
