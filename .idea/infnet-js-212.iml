@@ -3,6 +3,19 @@
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/vue05/meu-app" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/vue07" />
+      <excludeFolder url="file://$MODULE_DIR$/vue06" />
+      <excludeFolder url="file://$MODULE_DIR$/vue05" />
+      <excludeFolder url="file://$MODULE_DIR$/vue01" />
+      <excludeFolder url="file://$MODULE_DIR$/vue02" />
+      <excludeFolder url="file://$MODULE_DIR$/vue03" />
+      <excludeFolder url="file://$MODULE_DIR$/vue04" />
+      <excludeFolder url="file://$MODULE_DIR$/vue07-2" />
+      <excludeFolder url="file://$MODULE_DIR$/vue08" />
+      <excludeFolder url="file://$MODULE_DIR$/vue09" />
+      <excludeFolder url="file://$MODULE_DIR$/vue10" />
+      <excludeFolder url="file://$MODULE_DIR$/vue11" />
+      <excludeFolder url="file://$MODULE_DIR$/vue12" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
