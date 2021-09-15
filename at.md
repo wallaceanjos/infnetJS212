@@ -7,6 +7,8 @@ Crud de jogadores  (nome e qtd de gols)
 Crud de partidas (casa, visitante, placar)
 Crud de gols (jogador e time)
 
+![image](https://user-images.githubusercontent.com/140394/133349630-4acdef16-1891-4396-a3bc-d045b7159fc0.png)
+
 # pontos:
 
 * crud de time
@@ -21,7 +23,6 @@ Crud de gols (jogador e time)
 * telas sem blinks (exibir sempre um carregando ou n exibir tela ate finalizar carga)
 * usar o vuex corretamente (actions -> mutations -> alterar o state)
 * usar vue-router corretamente
-
 
 
 ### Exemplo 1 de dados para json-server
