@@ -16,6 +16,7 @@
       <excludeFolder url="file://$MODULE_DIR$/vue10" />
       <excludeFolder url="file://$MODULE_DIR$/vue11" />
       <excludeFolder url="file://$MODULE_DIR$/vue12" />
+      <excludeFolder url="file://$MODULE_DIR$/vue13" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

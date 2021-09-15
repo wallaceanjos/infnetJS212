@@ -10,7 +10,7 @@ fazer um crud de jogadores.
 
 * nome (string)
 * camisa (number)
-* salario (number)
+* salario (number)  
 * posição (caixa de selecao, dropdown)
 
 ### paginas:
